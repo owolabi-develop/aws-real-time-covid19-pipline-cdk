@@ -2,27 +2,23 @@
 import os
 
 import aws_cdk as cdk
+from aws_cdk import Tags
 
-from real_time_stock_pipline.real_time_stock_pipline_stack import RealTimeStockPiplineStack
+env_US = cdk.Environment(account="730335628196",region='us-east-1')
 
+from kinesis_stream.kinesis_stream_stack import KinesisStreamStack
+from dataproducer.lambda_producer_stack import DataProducerStack
+from dataconsumer.lambda_consumer_stack import DataConsumerStack
 
 app = cdk.App()
-RealTimeStockPiplineStack(app, "RealTimeStockPiplineStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
 
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
+kinesisStream = KinesisStreamStack(app,"kinesisStreamStack",env=env_US)
 
-    #env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
+ProducerStack = DataProducerStack(app,"kinesisStreamStack",env=env_US)
 
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
+ConsumerStack = DataConsumerStack(app,"kinesisStreamStack",env=env_US)
 
-    #env=cdk.Environment(account='123456789012', region='us-east-1'),
-
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
+Tags.of(app).add("ProjectOwner","Owolabi akintan")
+Tags.of(app).add("ProjectName","real-time-covid19-pipline")
 
 app.synth()
