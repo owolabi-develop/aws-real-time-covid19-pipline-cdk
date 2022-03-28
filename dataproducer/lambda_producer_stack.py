@@ -38,8 +38,8 @@ class DataProducerStack(Stack):
             code=_lambda.AssetCode("layer/finnhub_layer")
         )
         
-        lambda_death_rate = _lambda.Function(self,
-                                             "CovidLambdaSeathRate",
+        lambda_death_rate_data_producer = _lambda.Function(self,
+                                             "CovidLambdaDeathRateProducer",
                                              runtime=_lambda.Runtime.PYTHON_3_10,
                                              code=_lambda.Code.from_asset("lambda"),
                                              handler="data_producer_lambda.handler",
@@ -48,6 +48,18 @@ class DataProducerStack(Stack):
                                              role=lambda_role,
                                              environment=ENVIRONMENT
                                              )
+        
+        covid19_data_rule = aws_events.Rule(self,
+                                            "Covid19DataRule",
+                                            enabled=True,
+                                            schedule=aws_events.Schedule.rate(Duration.minutes(1))
+                                            )
+        covid19_data_target = aws_events_targets.LambdaFunction(
+            handler=lambda_death_rate_data_producer,
+            retry_attempts=3
+        )
+        covid19_data_rule.add_target(covid19_data_target)
+        
         
         
         
