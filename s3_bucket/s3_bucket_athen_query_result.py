@@ -9,8 +9,9 @@ class S3BucketAthenQueryStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         
-        athena_query_result = aws_s3.Bucket(self,"S3BucketAthenQueryStack",
-                                            bucket_name="queryResult",
+        athena_query_result = aws_s3.Bucket(self,
+                                            id="S3BucketAthenQueryStack",
+                                            bucket_name="queryresult",
                                             removal_policy=RemovalPolicy.DESTROY,
                                             auto_delete_objects=True,
                                             encryption=aws_s3.BucketEncryption.KMS
