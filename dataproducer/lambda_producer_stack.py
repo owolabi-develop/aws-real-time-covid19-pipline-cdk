@@ -1,6 +1,5 @@
-from typing import Any, Dict, Mapping
+
 from constructs import Construct
-from decouple import config
 from aws_cdk import (
     Stack,
     aws_events,
@@ -17,8 +16,8 @@ ENVIRONMENT = {
 }
 
 class DataProducerStack(Stack):
-     def __init__(self, scope: Construct, id: str, **kwargs):
-        super().__init__(scope, id, **kwargs)
+     def __init__(self, scope: Construct, construct_id: str, **kwargs):
+        super().__init__(scope, construct_id, **kwargs)
         
         lambda_role = iam.Role(
             self,
