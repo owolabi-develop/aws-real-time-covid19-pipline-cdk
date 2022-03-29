@@ -15,7 +15,7 @@ ENVIRONMENT = {
     "STREAM_NAME":"DeathRate"
 }
 
-class DataProducerStack(Stack):
+class ProducerStack(Stack):
      def __init__(self, scope: Construct, construct_id: str, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         

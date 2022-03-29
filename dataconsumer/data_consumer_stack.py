@@ -6,11 +6,17 @@ from aws_cdk import (
     aws_dynamodb as _dynamodb,
     Duration,
     aws_lambda_event_sources,
-    aws_kinesis as kinesis
+    aws_kinesis as kinesis,
+    aws_s3,
+    RemovalPolicy,
     
 )
-STREAM_ARN= "arn:aws:kinesis:us-west-1:730335628196:stream/DeathRate"
-class DataConsumerStack(Stack):
+STREAM_ARN= "arn:aws:kinesis:us-east-1:521427190825:stream/DeathRate"
+
+ENVIRONMENT = {
+    "BUCKET_NAME":"death-rate-bucket"
+}
+class ConsumerStack(Stack):
      def __init__(self, scope: Construct, construct_id: str, **kwargs):
         super().__init__(scope,construct_id, **kwargs)
         
@@ -37,6 +43,7 @@ class DataConsumerStack(Stack):
                                                    type=_dynamodb.AttributeType.STRING
                                                    )
                                                )
+         
         
         
         
@@ -47,7 +54,18 @@ class DataConsumerStack(Stack):
                                              handler="data_consumer_lambda.handler",
                                              timeout=Duration.seconds(60),
                                              role=lambda_consumer_role,
+                                             environment=ENVIRONMENT,
                                              )
+        
+        death_ratebucket = aws_s3.Bucket(self,
+                                            id="S3DeathrateBucket",
+                                            bucket_name="death-rate-bucket",
+                                            removal_policy=RemovalPolicy.DESTROY,
+                                            auto_delete_objects=True,
+                                            encryption=aws_s3.BucketEncryption.KMS
+                                            )
+        
+        death_ratebucket.grant_read_write(lambda_death_rate_data_consumer)
         
         stream = kinesis.Stream.from_stream_arn(self,
                                                 "covid19Stream",

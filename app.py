@@ -2,18 +2,21 @@ import os
 import aws_cdk as cdk
 from aws_cdk import Tags
 from kinesis_stream.kinesis_stream_stack import KinesisStreamStack
-from dataproducer.lambda_producer_stack import DataProducerStack
-from dataconsumer.lambda_consumer_stack import DataConsumerStack
+from dataproducer.data_producer_stack import ProducerStack
+from dataconsumer.data_consumer_stack import ConsumerStack
 from s3_bucket.s3_bucket_athen_query_result import S3BucketAthenQueryStack
+from glue.glue_crawler_stack import GlueCrawlerStack
 
-env_US = cdk.Environment(account="730335628196",region='us-east-1')
+env_US = cdk.Environment(account="521427190825",region='us-east-1')
 app = cdk.App()
 
 kinesisStream = KinesisStreamStack(app, "kinesisStreamStack",env=env_US)
 
-ProducerStack = DataProducerStack(app,"ProducerStack",env=env_US)
+Producer = ProducerStack(app,"ProducerStack",env=env_US)
 
-ConsumerStack = DataConsumerStack(app,"ConsumerStack",env=env_US)
+Consumer= ConsumerStack(app,"ConsumerStack",env=env_US)
+
+dbCrawler= GlueCrawlerStack(app,"GlueCrawlerStack",env=env_US)
 
 AthenQueryStack = S3BucketAthenQueryStack(app,"S3BucketAthenQueryStack",env=env_US)
 

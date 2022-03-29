@@ -16,4 +16,3 @@ class S3BucketAthenQueryStack(Stack):
                                             auto_delete_objects=True,
                                             encryption=aws_s3.BucketEncryption.KMS
                                             )
-        

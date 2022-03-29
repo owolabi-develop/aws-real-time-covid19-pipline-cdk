@@ -1,14 +1,65 @@
-#  Real time Covid19 Death Rate Pipline
 
-The idea of this Project was extracting covid19 data in real time from finnhub api endpoint using aws lambda function as producer to extract the data from the api then produce it to kinesis datastream. then tigger another aws lambda function to consume the data and load to dynamodb.
-Second process to query the data in real time using real-time kinesis data analytics with apache flink.
-last using glue crawler and catalog the dynamodb and use anthena to query the data and store the result on s3 bucket
+# Welcome to your CDK Python project!
 
+You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`real_time_stock_pipline_stack`)
+which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
 
+The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-## Architecture Diagram
-![Architecture Diagram](image.jpg)
+This project is set up like a standard Python project.  The initialization process also creates
+a virtualenv within this project, stored under the .venv directory.  To create the virtualenv
+it assumes that there is a `python3` executable in your path with access to the `venv` package.
+If for any reason the automatic creation of the virtualenv fails, you can create the virtualenv
+manually once the init process completes.
 
+To manually create a virtualenv on MacOS and Linux:
 
+```
+$ python -m venv .venv
+```
 
+After the init process completes and the virtualenv is created, you can use the following
+step to activate your virtualenv.
 
+```
+$ source .venv/bin/activate
+```
+
+If you are a Windows platform, you would activate the virtualenv like this:
+
+```
+% .venv\Scripts\activate.bat
+```
+
+Once the virtualenv is activated, you can install the required dependencies.
+
+```
+$ pip install -r requirements.txt
+```
+
+At this point you can now synthesize the CloudFormation template for this code.
+
+```
+$ cdk synth
+```
+
+You can now begin exploring the source code, contained in the hello directory.
+There is also a very trivial test included that can be run like this:
+
+```
+$ pytest
+```
+
+To add additional dependencies, for example other CDK libraries, just add to
+your requirements.txt file and rerun the `pip install -r requirements.txt`
+command.
+
+## Useful commands
+
+ * `cdk ls`          list all stacks in the app
+ * `cdk synth`       emits the synthesized CloudFormation template
+ * `cdk deploy`      deploy this stack to your default AWS account/region
+ * `cdk diff`        compare deployed stack with current state
+ * `cdk docs`        open CDK documentation
+
+Enjoy!
