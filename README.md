@@ -30,6 +30,20 @@ $ pip install -r requirements.txt
 ## Athena sample query  data
 ![Architechure Diagram](digramphoto\athenaQuerypick.jpg)
 
+## Apache Flink applications Zeppline query
+
+![Architechure Diagram](digramphoto\sample_analytic_query.jpg)
+
+## Apache Flink applications Zeppline real-time data
+
+![Architechure Diagram](digramphoto\sample_analytic_querydata.jpg)
+
+
+## Apache Flink applications Zeppline real-time chart visulization
+
+![Architechure Diagram](digramphoto\sample_analytic_querylife.jpg)
+
+
 
 
 
