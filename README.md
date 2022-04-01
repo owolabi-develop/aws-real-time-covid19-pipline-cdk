@@ -47,7 +47,7 @@ $ pip install -r requirements.txt
 
 ## Apache Flink applications Zeppline real-time chart visulization
 
-![sample_analytic_querylife](https://github.com/owolabi-develop/aws-real-time-covid19-pipline-cdk/assets/94055941/f44c3301-4a11-44e3-a3a1-69e10f95f141)
+![alt text](digramphoto/sample_analytic_querylife.jpg)
 
 
 
