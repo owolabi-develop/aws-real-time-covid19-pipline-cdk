@@ -3,6 +3,7 @@ from aws_cdk import(
     Stack,
     aws_kinesis as kinesis,
     Duration
+    
     )
 
 class KinesisStreamStack(Stack):
