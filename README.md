@@ -18,30 +18,37 @@ $ pip install -r requirements.txt
 ```
 
 ## Architechure Diagram
-![Architechure Diagram](digramphoto\aws_digram_project1.png)
+<img width="3926" alt="aws_digram_project1" src="https://github.com/owolabi-develop/aws-real-time-covid19-pipline-cdk/assets/94055941/d6c9b752-5f1a-4432-aa34-987107c9f09e">
+
 
 ## Kinesis Stream data
-![Architechure Diagram](digramphoto\deathrateinkinese.jpg)
+![deathrateinkinese](https://github.com/owolabi-develop/aws-real-time-covid19-pipline-cdk/assets/94055941/63fcc579-0b13-4f04-927b-b70af8d172a6)
+
 
 ## Dynamodb  data
-![Architechure Diagram](digramphoto\desthrateindynamodb.jpg)
+![desthrateindynamodb](https://github.com/owolabi-develop/aws-real-time-covid19-pipline-cdk/assets/94055941/67c7d4f3-7e92-4895-a786-5d236e3ea60f)
+
 
 
 ## Athena sample query  data
-![Architechure Diagram](digramphoto\athenaQuerypick.jpg)
+![athenaQuerypick](https://github.com/owolabi-develop/aws-real-time-covid19-pipline-cdk/assets/94055941/f1705f0b-dd11-4908-900e-e1925004af7c)
+
 
 ## Apache Flink applications Zeppline query
+![sample_analytic_query](https://github.com/owolabi-develop/aws-real-time-covid19-pipline-cdk/assets/94055941/263aa09a-adfd-4341-ba4b-fe992cd34211)
 
-![Architechure Diagram](digramphoto\sample_analytic_query.jpg)
+
 
 ## Apache Flink applications Zeppline real-time data
+![sample_analytic_querydata](https://github.com/owolabi-develop/aws-real-time-covid19-pipline-cdk/assets/94055941/67bda186-9eba-4497-8356-3ce1f058cc9e)
 
-![Architechure Diagram](digramphoto\sample_analytic_querydata.jpg)
+
 
 
 ## Apache Flink applications Zeppline real-time chart visulization
 
-![Architechure Diagram](digramphoto\sample_analytic_querylife.jpg)
+![sample_analytic_querylife](https://github.com/owolabi-develop/aws-real-time-covid19-pipline-cdk/assets/94055941/f44c3301-4a11-44e3-a3a1-69e10f95f141)
+
 
 
 
